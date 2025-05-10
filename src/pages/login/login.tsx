@@ -5,25 +5,24 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { login } from '../../services/slices/user';
 
 export const Login: FC = () => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-	const { from } = location.state || { from: { pathname: '/' } };
-	const { loginError } = useSelector(store => store.userReducer);
+  const { from } = location.state || { from: { pathname: '/' } };
+  const { loginError } = useSelector((store) => store.userReducer);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: SyntheticEvent) => {
-		e.preventDefault();
+    e.preventDefault();
 
-		try {
-			await dispatch(login({ email, password })).unwrap();
-			navigate(from.pathname, { replace: true });
-		} 
-		catch (_) {}
-	};
+    try {
+      await dispatch(login({ email, password })).unwrap();
+      navigate(from.pathname, { replace: true });
+    } catch (_) {}
+  };
 
   return (
     <LoginUI

@@ -7,16 +7,20 @@ import { fetchOrder } from '../../services/slices/orders';
 import { useParams } from 'react-router-dom';
 
 export const OrderInfo: FC = () => {
-	const dispatch = useDispatch();
-	const { number } = useParams<{ number: string }>();
+  const dispatch = useDispatch();
+  const { number } = useParams<{ number: string }>();
 
-	const {isOrderLoading, orderModalData: orderData} = useSelector(store => store.ordersReducer);
+  const { isOrderLoading, orderModalData: orderData } = useSelector(
+    (store) => store.ordersReducer
+  );
 
-	const {isLoading: isIngredientsLoading, data: ingredients} = useSelector(store => store.ingredientsReducer);
+  const { isLoading: isIngredientsLoading, data: ingredients } = useSelector(
+    (store) => store.ingredientsReducer
+  );
 
-	useEffect(() => {
-		dispatch(fetchOrder(Number(number)));
-	  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchOrder(Number(number)));
+  }, [dispatch]);
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {

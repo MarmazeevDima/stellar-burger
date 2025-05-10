@@ -9,19 +9,23 @@ export const Feed: FC = () => {
   const dispatch = useDispatch();
 
   const { isLoading, data } = useSelector((state) => state.feedsReducer);
-	const orders: TOrder[] = data.orders;
+  const orders: TOrder[] = data.orders;
 
-	const handleGetFeeds = () => {
-		dispatch(fetchFeeds());
-	};
+  const handleGetFeeds = () => {
+    dispatch(fetchFeeds());
+  };
 
-	useEffect(() => {
-		handleGetFeeds();
-	}, [dispatch]);
+  useEffect(() => {
+    handleGetFeeds();
+  }, [dispatch]);
 
   if (!orders.length) {
     return <Preloader />;
   }
 
-  return isLoading ? <Preloader /> : <FeedUI orders={orders} handleGetFeeds={handleGetFeeds} />;
+  return isLoading ? (
+    <Preloader />
+  ) : (
+    <FeedUI orders={orders} handleGetFeeds={handleGetFeeds} />
+  );
 };

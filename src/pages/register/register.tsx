@@ -5,24 +5,23 @@ import { useNavigate } from 'react-router-dom';
 import { register } from '../../services/slices/user';
 
 export const Register: FC = () => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-  
-	const { registerError } = useSelector(store => store.userReducer);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { registerError } = useSelector((store) => store.userReducer);
 
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: SyntheticEvent) => {
-		e.preventDefault();
+    e.preventDefault();
 
-		try {
-			await dispatch(register({ name: userName, email, password })).unwrap();
-			navigate('/profile', { replace: true });
-		} 
-		catch (_) {}
-	};
+    try {
+      await dispatch(register({ name: userName, email, password })).unwrap();
+      navigate('/profile', { replace: true });
+    } catch (_) {}
+  };
 
   return (
     <RegisterUI

@@ -9,31 +9,33 @@ export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-	const constructorItems = useSelector(store => store.builderReducer);
-	const orderRequest = useSelector(store => store.ordersReducer.orderRequest);
-  const orderModalData = useSelector(store => store.ordersReducer.orderModalData);
+  const constructorItems = useSelector((store) => store.builderReducer);
+  const orderRequest = useSelector((store) => store.ordersReducer.orderRequest);
+  const orderModalData = useSelector(
+    (store) => store.ordersReducer.orderModalData
+  );
 
-  const { isAuthenticated } = useSelector(store => store.userReducer);
+  const { isAuthenticated } = useSelector((store) => store.userReducer);
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;
 
-		if (!isAuthenticated) {
-			return navigate('/login');
-		}
+    if (!isAuthenticated) {
+      return navigate('/login');
+    }
 
-		const data = [
-			constructorItems.bun._id,
-			...constructorItems.ingredients.map((ingredient) => ingredient._id),
-			constructorItems.bun._id
-		];
-	  
-		dispatch(createOrder(data));
+    const data = [
+      constructorItems.bun._id,
+      ...constructorItems.ingredients.map((ingredient) => ingredient._id),
+      constructorItems.bun._id
+    ];
+
+    dispatch(createOrder(data));
   };
-  
-	const closeOrderModal = () => {
-		dispatch(resetOrderModalData());
-	};
+
+  const closeOrderModal = () => {
+    dispatch(resetOrderModalData());
+  };
 
   const price = useMemo(
     () =>
