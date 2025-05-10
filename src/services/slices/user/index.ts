@@ -1,4 +1,3 @@
-
 import { getUserApi, loginUserApi, logoutApi, registerUserApi, TLoginData, TRegisterData, updateUserApi } from "@api";
 import { createAsyncThunk, createSlice, SerializedError } from "@reduxjs/toolkit";
 import { TUser } from "@utils-types";
