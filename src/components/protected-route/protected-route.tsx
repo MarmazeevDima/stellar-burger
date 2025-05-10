@@ -18,10 +18,6 @@ export const ProtectedRoute: FC<TProtectedRouteProps> = ({
 
   const location = useLocation();
 
-  if (!isAuthChecked) {
-    return <Preloader />;
-  }
-
   if (onlyUnAuth && user.email && user.name) {
     const { from } = location.state || { from: { pathname: '/' } };
     return <Navigate to={from} />;
