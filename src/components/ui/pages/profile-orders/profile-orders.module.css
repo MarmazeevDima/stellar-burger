@@ -1,15 +1,15 @@
 .menu {
-  width: 320px;
+	width: 320px;
 }
 
 .main {
-  display: flex;
-  height: 100%;
-  width: 1240px;
-  overflow: hidden;
-  margin: 0 auto;
+	display: flex;
+	height: 100%;
+	width: 1240px;
+	overflow: hidden;
+	margin: 0 auto;
 }
 
 .orders {
-  width: 100%;
+	width: 100%;
 }
