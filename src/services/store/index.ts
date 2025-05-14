@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import {
-	TypedUseSelectorHook,
-	useDispatch as dispatchHook,
-	useSelector as selectorHook,
+  TypedUseSelectorHook,
+  useDispatch as dispatchHook,
+  useSelector as selectorHook
 } from 'react-redux';
 import { reducer as ingredientsReducer } from './../slices/ingredients';
 import { reducer as ordersReducer } from '../slices/orders';
@@ -13,18 +13,18 @@ import { reducer as userReducer } from '../slices/user';
 import { middleware as ordersMiddleware } from '../middlewares/orders';
 
 const rootReducer = combineReducers({
-	ingredientsReducer,
-	ordersReducer,
-	builderReducer,
-	feedsReducer,
-	userReducer,
+  ingredientsReducer,
+  ordersReducer,
+  builderReducer,
+  feedsReducer,
+  userReducer
 });
 
 const store = configureStore({
-	reducer: rootReducer,
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(ordersMiddleware),
-	devTools: process.env.NODE_ENV !== 'production',
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(ordersMiddleware),
+  devTools: process.env.NODE_ENV !== 'production'
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
