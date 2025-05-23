@@ -6,7 +6,7 @@ import {
   TLoginData,
   TRegisterData,
   updateUserApi
-} from '@api';
+} from '../../../utils/burger-api';
 import {
   createAsyncThunk,
   createSlice,
@@ -121,7 +121,7 @@ export const checkUserAuth = createAsyncThunk(
   }
 );
 
-const slice = createSlice({
+export const slice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},

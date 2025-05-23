@@ -1,4 +1,4 @@
-import { getFeedsApi } from '@api';
+import { getFeedsApi } from '../../../utils/burger-api';
 import {
   createAsyncThunk,
   createSlice,
@@ -27,7 +27,7 @@ export const fetchFeeds = createAsyncThunk(
   async () => await getFeedsApi()
 );
 
-const slice = createSlice({
+export const slice = createSlice({
   name: 'feeds',
   initialState,
   reducers: {},

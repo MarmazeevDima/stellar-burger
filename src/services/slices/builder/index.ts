@@ -12,7 +12,7 @@ export const initialState: TConstructorState = {
   ingredients: []
 };
 
-const slice = createSlice({
+export const slice = createSlice({
   name: 'builder',
   initialState,
   reducers: {
@@ -40,17 +40,19 @@ const slice = createSlice({
       state,
       action: PayloadAction<{ index: number; upwards: boolean }>
     ) {
-      const ingredientLink = state.ingredients[action.payload.index];
+      const { index, upwards } = action.payload;
+      const ingredients = [...state.ingredients];
 
-      if (action.payload.upwards) {
-        state.ingredients[action.payload.index] =
-          state.ingredients[action.payload.index - 1];
-        state.ingredients[action.payload.index - 1] = ingredientLink;
-      } else {
-        state.ingredients[action.payload.index] =
-          state.ingredients[action.payload.index + 1];
-        state.ingredients[action.payload.index + 1] = ingredientLink;
-      }
+      if (upwards && index === 0) return;
+      if (!upwards && index === ingredients.length - 1) return;
+
+      const newIndex = upwards ? index - 1 : index + 1;
+      [ingredients[index], ingredients[newIndex]] = [
+        ingredients[newIndex],
+        ingredients[index]
+      ];
+
+      state.ingredients = ingredients;
     },
     resetConstructor(state) {
       state.bun = null;

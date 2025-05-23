@@ -1,4 +1,4 @@
-import { getIngredientsApi } from '@api';
+import { getIngredientsApi } from '../../../utils/burger-api';
 import {
   createAsyncThunk,
   createSlice,
@@ -23,7 +23,7 @@ export const fetchIngredients = createAsyncThunk(
   async () => await getIngredientsApi()
 );
 
-const slice = createSlice({
+export const slice = createSlice({
   name: 'ingridients',
   initialState: initialState,
   reducers: {},
