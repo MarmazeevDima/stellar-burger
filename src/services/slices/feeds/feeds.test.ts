@@ -30,8 +30,8 @@ describe('Тестирование слайса ленты заказов', () =
     const testCases = [
       {
         name: 'состояние загрузки',
-        action: { 
-          type: fetchFeeds.pending.type 
+        action: {
+          type: fetchFeeds.pending.type
         },
         assertions: (state: typeof initialState) => {
           expect(state.isLoading).toBe(true);
@@ -40,7 +40,7 @@ describe('Тестирование слайса ленты заказов', () =
       },
       {
         name: 'ошибка загрузки',
-        action: { 
+        action: {
           type: fetchFeeds.rejected.type,
           error: { message: 'Ошибка сети' }
         },
@@ -51,7 +51,7 @@ describe('Тестирование слайса ленты заказов', () =
       },
       {
         name: 'успешная загрузка',
-        action: { 
+        action: {
           type: fetchFeeds.fulfilled.type,
           payload: mockFeeds
         },
@@ -78,10 +78,10 @@ describe('Тестирование слайса ленты заказов', () =
         data: mockFeeds,
         isLoading: false
       };
-      
+
       const pendingAction = { type: fetchFeeds.pending.type };
       const newState = slice.reducer(stateWithData, pendingAction);
-      
+
       expect(newState.data).toEqual(mockFeeds);
       expect(newState.isLoading).toBe(true);
     });

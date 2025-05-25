@@ -9,7 +9,7 @@ import { TOrder } from '@utils-types';
 
 describe('Тестирование слайса заказов', () => {
   const sampleDate = '2023-05-15T12:00:00Z';
-  
+
   const testOrder: TOrder = {
     _id: 'order123',
     ingredients: ['ing1', 'ing2'],
@@ -42,9 +42,9 @@ describe('Тестирование слайса заказов', () => {
       },
       {
         name: 'ошибка загрузки',
-        action: { 
+        action: {
           type: fetchOrders.rejected.type,
-          error: { message: 'Ошибка сети' } 
+          error: { message: 'Ошибка сети' }
         },
         check: (state: typeof initialState) => {
           expect(state.isOrdersLoading).toBe(false);
@@ -53,9 +53,9 @@ describe('Тестирование слайса заказов', () => {
       },
       {
         name: 'успешная загрузка',
-        action: { 
+        action: {
           type: fetchOrders.fulfilled.type,
-          payload: testOrdersList 
+          payload: testOrdersList
         },
         check: (state: typeof initialState) => {
           expect(state.isOrdersLoading).toBe(false);
@@ -95,9 +95,9 @@ describe('Тестирование слайса заказов', () => {
       },
       {
         name: 'успешное создание',
-        action: { 
+        action: {
           type: createOrder.fulfilled.type,
-          payload: newOrderResponse 
+          payload: newOrderResponse
         },
         check: (state: typeof initialState) => {
           expect(state.orderRequest).toBe(false);
@@ -132,9 +132,9 @@ describe('Тестирование слайса заказов', () => {
       },
       {
         name: 'успешная загрузка',
-        action: { 
+        action: {
           type: fetchOrder.fulfilled.type,
-          payload: testOrder 
+          payload: testOrder
         },
         check: (state: typeof initialState) => {
           expect(state.isOrderLoading).toBe(false);
@@ -162,7 +162,7 @@ describe('Тестирование слайса заказов', () => {
         stateWithOrder,
         slice.actions.resetOrderModalData()
       );
-      
+
       expect(result.orderModalData).toBeNull();
     });
   });

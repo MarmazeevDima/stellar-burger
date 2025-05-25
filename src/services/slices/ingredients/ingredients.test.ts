@@ -34,8 +34,8 @@ describe('Тестирование слайса ингредиентов', () =>
   const testCases = [
     {
       name: 'состояние загрузки',
-      action: { 
-        type: fetchIngredients.pending.type 
+      action: {
+        type: fetchIngredients.pending.type
       },
       assertions: (state: typeof initialState) => {
         expect(state.isLoading).toBe(true);
@@ -44,7 +44,7 @@ describe('Тестирование слайса ингредиентов', () =>
     },
     {
       name: 'ошибка загрузки',
-      action: { 
+      action: {
         type: fetchIngredients.rejected.type,
         error: { message: 'Сервер не доступен' }
       },
@@ -55,7 +55,7 @@ describe('Тестирование слайса ингредиентов', () =>
     },
     {
       name: 'успешная загрузка',
-      action: { 
+      action: {
         type: fetchIngredients.fulfilled.type,
         payload: mockIngredients
       },
@@ -81,14 +81,14 @@ describe('Тестирование слайса ингредиентов', () =>
         data: mockIngredients,
         isLoading: false
       };
-      
+
       const errorAction = {
         type: fetchIngredients.rejected.type,
         error: { message: 'Временная ошибка' }
       };
-      
+
       const newState = slice.reducer(stateWithData, errorAction);
-      
+
       expect(newState.data).toEqual(mockIngredients);
       expect(newState.isLoading).toBe(false);
       expect(newState.error).toEqual({ message: 'Временная ошибка' });

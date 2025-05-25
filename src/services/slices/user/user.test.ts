@@ -31,7 +31,7 @@ describe('Тестирование authSlice', () => {
       },
       {
         name: 'ошибка авторизации',
-        action: { 
+        action: {
           type: login.rejected.type,
           error: undefined,
           meta: { rejectedWithValue: true }
@@ -42,7 +42,7 @@ describe('Тестирование authSlice', () => {
       },
       {
         name: 'успешная авторизация',
-        action: { 
+        action: {
           type: login.fulfilled.type,
           payload: testUser
         },
@@ -72,19 +72,21 @@ describe('Тестирование authSlice', () => {
       },
       {
         name: 'ошибка регистрации (email занят)',
-        action: { 
+        action: {
           type: register.rejected.type,
           payload: { message: 'Email уже используется' },
           error: { message: 'Email уже используется' },
           meta: { rejectedWithValue: true }
         },
         check: (state: typeof initialState) => {
-          expect(state.registerError).toEqual({ message: 'Email уже используется' });
+          expect(state.registerError).toEqual({
+            message: 'Email уже используется'
+          });
         }
       },
       {
         name: 'успешная регистрация',
-        action: { 
+        action: {
           type: register.fulfilled.type,
           payload: testUser
         },
@@ -169,7 +171,7 @@ describe('Тестирование authSlice', () => {
       },
       {
         name: 'успешная загрузка',
-        action: { 
+        action: {
           type: fetchUser.fulfilled.type,
           payload: testUser
         },
