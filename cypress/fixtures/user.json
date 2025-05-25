@@ -1,0 +1,9 @@
+{
+	"success": true,
+	"accessToken": "gdgg24324",
+	"refreshToken": "jfhgdfdr4353",
+	"user": {
+		"email": "marmazeev.dima@gmail.com",
+		"name": "Дмитрий Мармазеев"
+	}
+}

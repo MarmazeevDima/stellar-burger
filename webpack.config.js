@@ -90,9 +90,6 @@ module.exports = {
     static: path.join(__dirname, './dist'),
     compress: true,
     historyApiFallback: true,
-    port: 4000,
-    open: true, // сайт будет открываться сам при запуске npm run dev
-    hot: true,
-    liveReload: true
+    port: 4000
   }
 };
